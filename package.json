@@ -1,0 +1,17 @@
+{
+  "name": "webgl-tetris-js",
+  "version": "1.0.0",
+  "description": "A simple tetris game using webgl",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Everton Matumoto",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

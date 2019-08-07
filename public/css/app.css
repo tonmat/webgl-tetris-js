@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+}
+
+html, body {
+    height: 100%;
+}
+
+img {
+    display: none;
+}

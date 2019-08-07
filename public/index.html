@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Tetris</title>
+    <link href="css/app.css" rel="stylesheet">
+</head>
+<body>
+<img alt="spritesheet.png" id="spritesheet-texture" src="textures/spritesheet.png" />
+<script id="vertex-shader" type="x-shader/x-vertex">
+    #version 100
+
+    attribute vec4 a_position_texcoords;
+    attribute vec4 a_color;
+
+    uniform mat4 u_projection;
+
+    varying vec2 v_texcoords;
+    varying vec4 v_color;
+
+    void main() {
+        gl_Position = vec4(a_position_texcoords.xy, 0, 1) * u_projection;
+        v_texcoords = a_position_texcoords.zw;
+        v_color = a_color;
+    }
+</script>
+<script id="fragment-shader" type="x-shader/x-fragment">
+    #version 100
+
+    precision mediump float;
+
+    uniform sampler2D u_material;
+
+    varying vec2 v_texcoords;
+    varying vec4 v_color;
+
+    void main() {
+        gl_FragColor = texture2D(u_material, v_texcoords) * v_color;
+    }
+</script>
+<script src="js/mat4f.js"></script>
+<script src="js/graphics.js"></script>
+<script src="js/inputs.js"></script>
+<script src="js/game.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
