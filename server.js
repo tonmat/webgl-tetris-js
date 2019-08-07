@@ -8,6 +8,6 @@ const app = express();
 app.set('port', port);
 app.use(express.static(publicDir));
 
-app.listen(port, () = > {
+app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
-})
+});
