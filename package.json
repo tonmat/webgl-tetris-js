@@ -1,7 +1,7 @@
 {
   "name": "webgl-tetris-js",
   "version": "1.0.0",
-  "description": "A simple tetris game using webgl",
+  "description": "A simple tetris game using WebGL",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
