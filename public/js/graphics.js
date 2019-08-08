@@ -60,13 +60,13 @@
       gl.attachShader(this._program, shader);
     }.bind(this));
     gl.linkProgram(this._program);
+    shaders.forEach(function(shader) {
+      gl.deleteShader(shader);
+    });
     var status = gl.getProgramParameter(this._program, gl.LINK_STATUS);
     if (status !== true) {
       var infoLog = gl.getProgramInfoLog(this._program);
       console.error('Error linking program: ' + infoLog);
-      shaders.forEach(function(shader) {
-        gl.deleteShader(shader);
-      });
       gl.deleteProgram(this._program);
     }
     this._uniformsLocations = {};
@@ -77,6 +77,7 @@
   graphics.Shader.unbind = function() {
     if (graphics.Shader._binded === undefined)
       return;
+    graphics.Shader._binded = undefined;
     gl.useProgram(null);
   };
 
@@ -115,6 +116,7 @@
   graphics.Shader.prototype.bind = function() {
     if (graphics.Shader._binded === this._program)
       return;
+    graphics.Shader._binded = this._program;
     gl.useProgram(this._program);
   };
 
@@ -149,12 +151,14 @@
   graphics.Texture.unbind = function() {
     if (graphics.Texture._binded === undefined)
       return;
+    graphics.Texture._binded = undefined;
     gl.bindTexture(gl.TEXTURE_2D, null);
   };
 
   graphics.Texture.prototype.bind = function() {
     if (graphics.Texture._binded === this._texture)
       return;
+    graphics.Texture._binded = this._texture;
     gl.bindTexture(gl.TEXTURE_2D, this._texture);
   };
 
