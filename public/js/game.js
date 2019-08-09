@@ -84,14 +84,13 @@
     if (this.player.size) {
       var rows = this.board.placePlayer(this.player);
       this.count++;
-      if (this.count % 8 === 0) {
+      if (this.count % 8 === 0)
         if (this.level < 99)
-          this.level = this.level + 1;
-      }
+          this.level++;
       this.score += 1 << rows * 2;
       if (rows > 0) {
         this.clearTime = this.time;
-        this.clearCD = 0.6;
+        this.clearCD = .6;
         this.clearY0 = this.player.y;
         this.clearY1 = this.player.y + this.player.size - 1;
         this.player.reset();
@@ -232,9 +231,9 @@
 
   game.Board.prototype.setCell = function(x, y, cell) {
     if (cell)
-      this.rows[y] |= cell << x;
+      this.rows[y] |= 1 << x;
     else
-      this.rows[y] &= ~(cell << x);
+      this.rows[y] &= ~(1 << x);
   };
 
   game.Board.prototype.isFullRow = function(y) {
@@ -297,6 +296,8 @@
   game.Shape.prototype.reset = function() {
     this.size = 0;
     this.mask = 0;
+    this.centerX = 0;
+    this.centerY = 0;
   };
 
   game.Shape.prototype.calcCenter = function() {

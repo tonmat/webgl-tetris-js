@@ -255,9 +255,6 @@ function renderBoard() {
   renderBG(sprites.bg, 5, 0, tetris.board.width, tetris.board.height);
   for (var y = 0; y < tetris.board.height; y++) {
     var isFullRow = tetris.board.isFullRow(y);
-    var spt_board;
-    if (isFullRow)
-      spt_board = sprites.pieces.clear;
     for (var x = 0; x < tetris.board.width; x++) {
       var spt;
       if (paused)
